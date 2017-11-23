@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/backgroundColor"
+    android:orientation="vertical"
+    tools:context="com.example.pedro.cajabar.MainActivity">
+
+    <TextView
+        style="@style/mainActivityTitleStyle"
+        android:text="@string/pedido" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+
+        <TableLayout
+            android:id="@+id/tablaPedido"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+
+
+        </TableLayout>
+    </ScrollView>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="50dp"
+        android:orientation="vertical">
+
+        <View
+            style="@style/separatorStyle"
+            android:layout_marginTop="5dp" />
+
+        <TableLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TableRow>
+
+                <TextView
+                    android:id="@+id/tvImpuesto"
+                    style="@style/pedidoTextStyle"
+                    android:layout_weight="3"
+                    android:text="@string/tv_igic" />
+
+                <TextView
+                    android:id="@+id/tv_cantImpuesto"
+                    style="@style/pedidoTextStyle"
+                    android:layout_weight="1"
+                    android:text="@string/valorIGIC" />
+
+                <TextView
+                    android:id="@+id/resCalculoImpuesto"
+                    style="@style/pedidoTextStyle"
+                    android:layout_weight="1"
+                    android:text="@string/na"
+                    android:textColor="@color/secondaryTextColor" />
+
+            </TableRow>
+
+            <TableRow>
+
+                <TextView
+                    android:id="@+id/tvTotal"
+                    style="@style/pedidoTextStyle"
+                    android:layout_weight="3"
+                    android:text="@string/total" />
+
+                <TextView
+                    android:id="@+id/tv_cantTotal"
+                    style="@style/pedidoTextStyle"
+                    android:layout_weight="1"
+                    android:text="@string/na" />
+
+                <TextView
+                    android:id="@+id/resCalculoTotal"
+
+                    style="@style/pedidoTextStyle"
+                    android:layout_weight="1"
+                    android:text="@string/na"
+                    android:textColor="@color/secondaryTextColor" />
+            </TableRow>
+
+        </TableLayout>
+    </LinearLayout>
+
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <Button
+            android:id="@+id/bAdd"
+            style="@style/buttonStyle"
+            android:layout_gravity="start"
+            android:onClick="botonAñadir"
+            android:text="@string/add" />
+
+        <Button
+            android:id="@+id/bEnviar"
+            style="@style/buttonStyle"
+            android:layout_gravity="center"
+            android:text="@string/enviar" />
+
+        <Button
+            android:id="@+id/bCancelar"
+            style="@style/buttonStyle"
+            android:layout_gravity="end"
+            android:text="@string/cancelar" />
+    </FrameLayout>
+
+
+</LinearLayout>

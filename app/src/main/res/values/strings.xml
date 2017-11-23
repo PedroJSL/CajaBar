@@ -1,0 +1,59 @@
+<resources>
+
+    <string name="app_name">CajaBar</string>
+    <string name="moneda_de_cambio">Moneda de cambio</string>
+    <string name="config">Configuración</string>
+    <string name="euro">Euro (€)</string>
+    <string name="iva">IVA 21%</string>
+    <string name="most_bebidas_alcoholicas">Mostrar bebidas alcoholicas.</string>
+    <string name="igic">IGIC 6%</string>
+    <string name="impuesto">Impuesto</string>
+    <string name="bitcoin">Bitcoin (BTC)</string>
+    <string name="dolar">Dolar ($)</string>
+    <string name="guardar">Guardar</string>
+    <string name="pedido">Pedido</string>
+    <string name="tv_igic">IGIC</string>
+    <string name="total">Total</string>
+    <string name="enviar">Enviar</string>
+    <string name="add">Añadir</string>
+    <string name="cancelar">Cancelar</string>
+    <string name="valorIGIC">6%</string>
+    <string name="na">-</string>
+    <string name="select_product">Selecciona un producto</string>
+    <string name="confirmar">Confirmar</string>
+    <string name="appletizer">Appletizer</string>
+    <string name="arrugadas">Arrugadas</string>
+    <string name="calamares">Calamares</string>
+    <string name="tropical">Tropical</string>
+    <string name="clipper">Clipper</string>
+    <string name="cola">Coca-Cola</string>
+    <string name="ensalada">Ensalada</string>
+    <string name="flan">Flan</string>
+    <string name="helado">Helado</string>
+    <string name="hamburguesa">Hamburguesa</string>
+    <string name="nuggets">Nuggets</string>
+    <string name="nestea">Nestea</string>
+    <string name="papas">Papas</string>
+    <string name="perrito">Perrito</string>
+    <string name="pizza">Pizza</string>
+    <string name="redbull">RedBull</string>
+    <string name="sandwich">Sandwich</string>
+    <string name="tarta">Tarta</string>
+    <string name="tiramisu">Tiramisu</string>
+    <string name="blanco">Vino Blanco</string>
+    <string name="tinto">Vino Tinto</string>
+    <string name="precio">Precio</string>
+    <string name="cantidad">Cantidad</string>
+    <string-array name="opc_cantidad">
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+        <item>6</item>
+        <item>7</item>
+        <item>8</item>
+        <item>9</item>
+        <item>10</item>
+    </string-array>
+</resources>

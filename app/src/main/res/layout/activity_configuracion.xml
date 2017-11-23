@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/backgroundColor"
+    tools:context="com.example.pedro.cajabar.Configuracion">
+
+    <TextView
+        style="@style/titleSetting"
+        android:text="@string/moneda_de_cambio" />
+
+    <RadioGroup
+        android:id="@+id/rgMoneda"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <RadioButton
+            android:id="@+id/euro"
+            style="@style/radioStyle"
+            android:text="@string/euro" />
+
+        <RadioButton
+            android:id="@+id/dolar"
+            style="@style/radioStyle"
+            android:text="@string/dolar" />
+
+        <RadioButton
+            android:id="@+id/bitcoin"
+            style="@style/radioStyle"
+            android:text="@string/bitcoin" />
+    </RadioGroup>
+
+    <View style="@style/separatorStyle" />
+
+    <TextView
+        style="@style/titleSetting"
+        android:text="@string/impuesto" />
+
+    <RadioGroup
+        android:id="@+id/rgImpuesto"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <RadioButton
+            android:id="@+id/iva"
+            style="@style/radioStyle"
+            android:text="@string/iva" />
+
+        <RadioButton
+            android:id="@+id/igic"
+            style="@style/radioStyle"
+            android:text="@string/igic" />
+    </RadioGroup>
+
+    <View style="@style/separatorStyle" />
+
+    <CheckBox
+        android:id="@+id/bebidasAlcoholicas"
+        style="@style/radioStyle"
+        android:text="@string/most_bebidas_alcoholicas" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="bottom|end"
+        android:orientation="vertical">
+
+        <Button
+            android:id="@+id/bGuardar"
+            android:text="@string/guardar"
+            style="@style/buttonStyle"
+            android:onClick="botonGuardar"/>
+    </LinearLayout>
+
+</LinearLayout>
