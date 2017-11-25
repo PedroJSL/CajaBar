@@ -61,12 +61,14 @@
         <Button
             android:id="@+id/bConfirmar"
             style="@style/buttonStyle"
+            android:onClick="confirmar"
             android:layout_gravity="start"
             android:text="@string/confirmar" />
 
         <Button
             android:id="@+id/bCancelarProducto"
             style="@style/buttonStyle"
+            android:onClick="cancelar"
             android:layout_gravity="end"
             android:text="@string/cancelar" />
     </FrameLayout>
