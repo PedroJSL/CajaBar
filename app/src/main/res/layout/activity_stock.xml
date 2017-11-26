@@ -13,27 +13,33 @@
         android:layout_height="wrap_content">
 
         <TextView
-            style="@style/pedidoTextStyle"
+            style="@style/stockTextStyle"
             android:layout_gravity="start"
+            android:textColor="@color/colorPrimary"
             android:text="@string/cantidad" />
 
         <Spinner
             android:id="@+id/cantidadProducto"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="50dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:entries="@array/opc_cantidad"/>
+            android:entries="@array/opc_cantidad" />
 
 
             <TextView
 
-                style="@style/pedidoTextStyle"
+                style="@style/stockTextStyle"
+                android:textColor="@color/colorPrimary"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/precio" />
 
             <TextView
-                style="@style/pedidoTextStyle"
+                android:id="@+id/precio"
+                style="@style/stockTextStyle"
+                android:layout_marginStart="20dp"
                 android:textColor="@color/secondaryTextColor"
                 android:text="@string/na" />
 

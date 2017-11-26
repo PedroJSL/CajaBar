@@ -8,9 +8,12 @@ import android.view.View;
 import android.widget.CheckBox;
 import android.widget.RadioGroup;
 
+import java.util.ArrayList;
+
 
 public class Configuracion extends AppCompatActivity {
     Config config;
+    ArrayList<LineaPedido> listaPedido;
     RadioGroup moneda, impuesto;
     CheckBox alcoholic;
     @Override
@@ -19,6 +22,9 @@ public class Configuracion extends AppCompatActivity {
         setContentView(R.layout.activity_configuracion);
 
         config = (Config) getIntent().getSerializableExtra("config");
+        if(getIntent().getExtras().containsKey("listaPedido")){
+           // listaPedido = getIntent().getLiExtra("listaPedido");
+        }
         moneda = findViewById(R.id.rgMoneda);
         impuesto = findViewById(R.id.rgImpuesto);
         alcoholic = findViewById(R.id.bebidasAlcoholicas);

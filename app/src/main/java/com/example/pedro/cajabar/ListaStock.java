@@ -10,13 +10,15 @@ public class ListaStock {
     private ArrayList<Producto> listaStock;
     Activity v;
 
+    private Config config;
     private String[] nombres;
     private int[] imagenes;
     private double[] precios;
     private boolean[] tienenAlcohol;
 
-    public ListaStock(Activity v) {
+    public ListaStock(Activity v, Config config) {
         this.v = v;
+        this.config = config;
         listaStock = new ArrayList<>();
         crearListaStock();
 
@@ -65,7 +67,7 @@ public class ListaStock {
 
 
         for (int i = 0; i < nombres.length; i++) {
-            Producto product = new Producto(imagenes[i], nombres[i], precios[i], tienenAlcohol[i]);
+            Producto product = new Producto(imagenes[i], nombres[i], precios[i], config.getMoneda(), tienenAlcohol[i]);
             listaStock.add(product);
         }
 

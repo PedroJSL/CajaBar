@@ -7,25 +7,23 @@ package com.example.pedro.cajabar;
 public class LineaPedido {
     Producto producto;
     int cantidad;
+    double precioTotal;
 
-    public LineaPedido(Producto producto, int cantidad){
+    public LineaPedido(Producto producto, int cantidad, double precioTotal){
         this.producto = producto;
         this.cantidad = cantidad;
+        this.precioTotal = precioTotal;
     }
 
     public Producto getProducto() {
         return producto;
     }
 
-    public void setProducto(Producto producto) {
-        this.producto = producto;
-    }
-
     public int getCantidad() {
         return cantidad;
     }
 
-    public void setCantidad(int cantidad) {
-        this.cantidad = cantidad;
+    public double getPrecioTotal() {
+        return precioTotal;
     }
 }
