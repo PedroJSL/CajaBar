@@ -13,11 +13,13 @@
     <string name="guardar">Guardar</string>
     <string name="pedido">Pedido</string>
     <string name="tv_igic">IGIC</string>
+    <string name="tv_iva">IVA</string>
     <string name="total">Total</string>
     <string name="enviar">Enviar</string>
     <string name="add">Añadir</string>
     <string name="cancelar">Cancelar</string>
     <string name="valorIGIC">6%</string>
+    <string name="valorIVA">21%</string>
     <string name="na">-</string>
     <string name="select_product">Selecciona un producto</string>
     <string name="confirmar">Confirmar</string>

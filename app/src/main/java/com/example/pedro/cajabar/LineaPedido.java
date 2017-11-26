@@ -1,18 +1,20 @@
 package com.example.pedro.cajabar;
 
+import java.io.Serializable;
+
 /**
  * Created by pedro on 25/11/2017.
  */
 
-public class LineaPedido {
+public class LineaPedido implements Serializable{
     Producto producto;
     int cantidad;
-    double precioTotal;
 
-    public LineaPedido(Producto producto, int cantidad, double precioTotal){
+
+    public LineaPedido(Producto producto, int cantidad){
         this.producto = producto;
         this.cantidad = cantidad;
-        this.precioTotal = precioTotal;
+
     }
 
     public Producto getProducto() {
@@ -23,7 +25,4 @@ public class LineaPedido {
         return cantidad;
     }
 
-    public double getPrecioTotal() {
-        return precioTotal;
-    }
 }

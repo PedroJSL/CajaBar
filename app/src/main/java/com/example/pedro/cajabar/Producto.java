@@ -1,10 +1,16 @@
 package com.example.pedro.cajabar;
 
+
+import android.widget.Toast;
+
+import java.io.Serializable;
+
+
 /**
  * Created by pedro on 22/11/2017.
  */
 
-public class Producto {
+public class Producto implements Serializable {
 
     private int imagen;
     private String nombre;
@@ -19,105 +25,106 @@ public class Producto {
         this.moneda = moneda;
         this.tieneAlcohol = tieneAlcohol;
 
-       precioSegunMoneda(moneda);
+        precioSegunMoneda(moneda);
     }
 
     public int getImagen() {
         return imagen;
     }
 
-    public void setImagen(int imagen) {
-        this.imagen = imagen;
-    }
 
     public String getNombre() {
         return nombre;
     }
 
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
-    }
 
     public double getPrecio() {
         return precio;
     }
 
-    public void setPrecio(double precio) {
-        this.precio = precio;
+
+    public String getMoneda() {
+        return moneda;
+    }
+
+    public void setMoneda(String moneda) {
+        this.moneda = moneda;
     }
 
     public boolean hasAlcohol() {
         return tieneAlcohol;
     }
 
-    public void setTieneAlcohol(boolean tieneAlcohol) {
-        this.tieneAlcohol = tieneAlcohol;
-    }
 
     public void precioSegunMoneda(String moneda) {
         switch (moneda) {
             case "dolar":
-
-                    //Euro a Dolar
-                    precio = redondearDecimal(precio * 1.17);
+                //Euro a Dolar
+                precio = redondearDecimal(precio * 1.17,moneda);
                 break;
             case "bitcoin":
-                    //Euro a Bitcoin
-                    precio = redondearDecimal(precio/0.000136370);
+                //Euro a Bitcoin
+                precio = redondearDecimal(precio / 7275.93,moneda);
                 break;
         }
         this.moneda = moneda;
     }
 
-   /* public void cambioMoneda(String moneda) {
+
+    public void cambioMoneda(String moneda) {
         switch (moneda) {
             case "euro":
                 if (this.moneda.equals("dolar")) {
                     //Dolar a Euro
-                    precio = redondearDecimal(precio / 1.17);
+                    precio = redondearDecimal(precio / 1.17,moneda);
                 } else if (this.moneda.equals("bitcoin")) {
                     //Bitcoin a Euro
-                    precio = redondearDecimal(precio / 7275.93);
+                    precio = redondearDecimal(precio * 7275.93,moneda);
                 }
                 break;
             case "dolar":
                 if (this.moneda.equals("euro")) {
                     //Euro a Dolar
-                    precio = redondearDecimal(precio * 1.17);
+                    precio = redondearDecimal(precio * 1.17,moneda);
                 } else if (this.moneda.equals("bitcoin")) {
-                    //Bitcoind a Dolar
-                    precio = redondearDecimal(precio / 8766.2);
+                    //Bitcoin a Dolar
+                    precio = redondearDecimal(precio * 8766.2,moneda);
                 }
                 break;
             case "bitcoin":
-                if(this.moneda.equals("euro")){
+                if (this.moneda.equals("euro")) {
                     //Euro a Bitcoin
-                    precio = redondearDecimal(precio*7275.93);
-                }else if(this.moneda.equals("dolar")){
+                    precio = redondearDecimal(precio / 7432.35,moneda);
+                } else if (this.moneda.equals("dolar")) {
                     //Dolar a Bitcoin
-                    precio = redondearDecimal(precio * 8766.2);
+                    precio = redondearDecimal(precio / 8857.25,moneda);
                 }
                 break;
         }
         this.moneda = moneda;
-    }*/
-
-    private double redondearDecimal(double precio) {
-        return ((double) Math.round(precio * 100d) / 100d);
     }
 
-    public String checkPrecio(){
-        if(precio - (int)precio ==0){
+
+    public double redondearDecimal(double precio,String moneda) {
+        if (moneda.equals("bitcoin")) {
+            return ((double) Math.round(precio * 100000d) / 100000d);
+        } else {
+            return ((double) Math.round(precio * 100d) / 100d);
+        }
+    }
+
+    public String checkPrecio() {
+        if (precio - (int) precio == 0) {
             return String.valueOf((int) precio);
-        }else {
+        } else {
             return String.valueOf(precio);
         }
     }
 
-    public String checkPrecio(double precio){
-        if(precio - (int)precio ==0){
+    public String checkPrecio(double precio) {
+        if (precio - (int) precio == 0) {
             return String.valueOf((int) precio);
-        }else {
+        } else {
             return String.valueOf(precio);
         }
     }

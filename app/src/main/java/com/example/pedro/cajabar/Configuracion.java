@@ -4,6 +4,7 @@ package com.example.pedro.cajabar;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.CheckBox;
 import android.widget.RadioGroup;
@@ -31,6 +32,17 @@ public class Configuracion extends AppCompatActivity {
 
         readConfig();
 
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()){
+
+            case android.R.id.home:
+                onBackPressed();
+                break;
+        }
+        return true;
     }
 
     private void readConfig() {
@@ -63,6 +75,7 @@ public class Configuracion extends AppCompatActivity {
             alcoholic.setChecked(false);
         }
     }
+
 
     public void setConfig(){
 

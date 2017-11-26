@@ -101,12 +101,14 @@
             android:text="@string/add" />
 
         <Button
+            android:onClick="botonEnviar"
             android:id="@+id/bEnviar"
             style="@style/buttonStyle"
             android:layout_gravity="center"
             android:text="@string/enviar" />
 
         <Button
+            android:onClick="botonCancelar"
             android:id="@+id/bCancelar"
             style="@style/buttonStyle"
             android:layout_gravity="end"

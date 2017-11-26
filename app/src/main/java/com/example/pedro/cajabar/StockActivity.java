@@ -1,11 +1,13 @@
 package com.example.pedro.cajabar;
 
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.graphics.Color;
 import android.graphics.Point;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Display;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ImageView;
@@ -23,6 +25,7 @@ import java.util.NoSuchElementException;
 public class StockActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
     private ArrayList<Producto> listaStock;
     private ArrayList<LineaPedido> listaPedido;
+    private ListaPedido objListaPedido;
     private ArrayList<ImageView> imagenesButton;
     private TextView precio;
     private double precioTotal;
@@ -31,6 +34,7 @@ public class StockActivity extends AppCompatActivity implements AdapterView.OnIt
     private Config config;
     private String simboloMoneda;
     private Producto productoElegido;
+
 
 
     @Override
@@ -48,10 +52,11 @@ public class StockActivity extends AppCompatActivity implements AdapterView.OnIt
             simboloMoneda = " B";
         }
         if(getIntent().getExtras().containsKey("listaPedido")){
-            listaPedido = ((ListaPedido)getIntent().getSerializableExtra("listaPedido")).getListaPedido();
+            objListaPedido = (ListaPedido)getIntent().getSerializableExtra("listaPedido");
         }else {
-            listaPedido = new ListaPedido().getListaPedido();
+            objListaPedido = new ListaPedido();
         }
+        listaPedido = objListaPedido.getListaPedido();
 
         cantidad = findViewById(R.id.cantidadProducto);
         cantidad.setOnItemSelectedListener(this);
@@ -70,7 +75,12 @@ public class StockActivity extends AppCompatActivity implements AdapterView.OnIt
         Producto p;
         ImageView img;
         TextView txt;
-        int imagenPorFila = 4;
+        int imagenPorFila;
+        if(getResources().getConfiguration().orientation== Configuration.ORIENTATION_PORTRAIT){
+           imagenPorFila = 4;
+        }else{
+           imagenPorFila = 6;
+        }
         Display pantalla = getWindowManager().getDefaultDisplay();
         Point size = new Point();
         pantalla.getSize(size);
@@ -162,8 +172,9 @@ public class StockActivity extends AppCompatActivity implements AdapterView.OnIt
     //Establecer precio de la selección en el TextView
     public void setPrecio() {
         if (productoElegido != null) {
-            precioTotal = productoElegido.getPrecio() * Integer.parseInt(cantidad.getSelectedItem().toString());
-            precio.setText(productoElegido.checkPrecio(precioTotal) + simboloMoneda);
+                precioTotal = productoElegido.redondearDecimal(productoElegido.getPrecio() * Integer.parseInt(cantidad.getSelectedItem().toString()),config.getMoneda());
+                precio.setText(productoElegido.checkPrecio(precioTotal) + simboloMoneda);
+
         } else {
             precio.setText(R.string.na);
         }
@@ -181,20 +192,44 @@ public class StockActivity extends AppCompatActivity implements AdapterView.OnIt
     }
 
     public void confirmar(View v) {
+        LineaPedido existente = null;
         if (productoElegido == null) {
             Toast.makeText(getApplicationContext(), "Seleccione un producto", Toast.LENGTH_SHORT).show();
         } else {
-            LineaPedido lineaPedido = new LineaPedido(productoElegido, Integer.parseInt(cantidad.getSelectedItem().toString()), precioTotal);
-            listaPedido.add(lineaPedido);
+            LineaPedido lineaPedido = new LineaPedido(productoElegido, Integer.parseInt(cantidad.getSelectedItem().toString()));
+            for (LineaPedido linea: listaPedido) {
+                if(linea.getProducto().getNombre().equals(lineaPedido.getProducto().getNombre())){
+                   existente = linea;
+                }
+            }
+            if(existente!=null){
+                LineaPedido nuevaLinea = new LineaPedido(existente.getProducto(),lineaPedido.getCantidad()+existente.getCantidad());
+                listaPedido.remove(existente);
+                listaPedido.add(nuevaLinea);
+            }else {
+                listaPedido.add(lineaPedido);
+            }
+            objListaPedido.setListaPedido(listaPedido);
+
+            Intent intent = new Intent();
+            intent.putExtra("config", config);
+            intent.putExtra("listaPedido", objListaPedido);
+            setResult(RESULT_OK,intent);
+            finish();
         }
 
-        Intent intent = new Intent();
-        intent.putExtra("config", config);
-        intent.putExtra("listaPedido", listaPedido);
-        setResult(RESULT_OK);
-        finish();
+
     }
 
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()){
+            case android.R.id.home:
+                onBackPressed();
+                break;
+        }
+        return true;
+    }
 
     public void cancelar(View v) {
         finish();
@@ -202,7 +237,6 @@ public class StockActivity extends AppCompatActivity implements AdapterView.OnIt
 
     @Override
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-        setPrecio();
     }
 
     @Override

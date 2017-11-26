@@ -17,4 +17,8 @@ public class ListaPedido implements Serializable{
     public ArrayList<LineaPedido> getListaPedido() {
         return listaPedido;
     }
+
+    public void setListaPedido(ArrayList<LineaPedido> listaPedido){
+        this.listaPedido = listaPedido;
+    }
 }
