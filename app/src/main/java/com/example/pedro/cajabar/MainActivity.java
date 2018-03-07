@@ -257,6 +257,7 @@ public class MainActivity extends AppCompatActivity {
     public void botonCancelar(View v){
         eliminarTabla();
         objListaPedido = null;
+        listaPedido = null;
         tvImporteImpuesto.setText(R.string.na);
         tvCantidadTotal.setText(R.string.na);
         tvImporteTotal.setText(R.string.na);
@@ -265,6 +266,7 @@ public class MainActivity extends AppCompatActivity {
     public void botonEnviar(View v){
         eliminarTabla();
         objListaPedido = null;
+        listaPedido = null;
         tvImporteImpuesto.setText(R.string.na);
         tvCantidadTotal.setText(R.string.na);
         tvImporteTotal.setText(R.string.na);

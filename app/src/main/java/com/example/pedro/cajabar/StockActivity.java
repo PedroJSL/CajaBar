@@ -203,9 +203,14 @@ public class StockActivity extends AppCompatActivity implements AdapterView.OnIt
                 }
             }
             if(existente!=null){
-                LineaPedido nuevaLinea = new LineaPedido(existente.getProducto(),lineaPedido.getCantidad()+existente.getCantidad());
-                listaPedido.remove(existente);
-                listaPedido.add(nuevaLinea);
+                int cantidad = lineaPedido.getCantidad()+existente.getCantidad();
+                if(cantidad<=10) {
+                    LineaPedido nuevaLinea = new LineaPedido(existente.getProducto(), cantidad);
+                    listaPedido.remove(existente);
+                    listaPedido.add(nuevaLinea);
+                }else{
+                    Toast.makeText(getApplicationContext(), R.string.error_cant_prod,Toast.LENGTH_LONG).show();
+                }
             }else {
                 listaPedido.add(lineaPedido);
             }

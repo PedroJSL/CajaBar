@@ -46,6 +46,7 @@
     <string name="tinto">Vino Tinto</string>
     <string name="precio">Precio</string>
     <string name="cantidad">Cantidad</string>
+    <string name="error_cant_prod">No puedes seleccionar mas de 10 elementos de un mismo producto.</string>
     <string-array name="opc_cantidad">
         <item>1</item>
         <item>2</item>
